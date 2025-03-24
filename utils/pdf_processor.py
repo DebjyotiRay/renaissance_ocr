@@ -6,7 +6,7 @@ import os
 import logging
 import tempfile
 from typing import List, Optional, Dict, Any
-import PyPDF2
+import PyPDF2 # type: ignore
 from PIL import Image
 import numpy as np
 import cv2
