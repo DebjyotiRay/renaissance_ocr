@@ -1,0 +1,6 @@
+2025-03-24 09:32:32,148 - __main__ - INFO - Initializing Renaissance OCR System
+2025-03-24 09:32:32,148 - __main__ - INFO - Initializing image preprocessor
+2025-03-24 09:32:32,148 - preprocessing.image_processor - INFO - Initialized Renaissance Image Processor
+2025-03-24 09:32:32,148 - __main__ - INFO - Initializing vision encoder
+2025-03-24 09:32:32,148 - models.vision_encoder - INFO - Loading vision encoder: openai/clip-vit-large-patch14
+2025-03-24 09:32:34,252 - __main__ - ERROR - Error initializing components: Using `bitsandbytes` 8-bit quantization requires the latest version of bitsandbytes: `pip install -U bitsandbytes`

@@ -17,7 +17,7 @@ This guide will help you get started with the Renaissance OCR system for process
 pip install renaissance-ocr
 
 # Or install in development mode from the repository
-git clone https://github.com/yourusername/renaissance-ocr.git
+git clone https://github.com/DebjyotiRay/renaissance-ocr.git
 cd renaissance-ocr
 pip install -e .
 ```

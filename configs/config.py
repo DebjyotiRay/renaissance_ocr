@@ -3,7 +3,7 @@ Configuration settings for the Renaissance OCR system.
 """
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Union, Tuple
 
 @dataclass
@@ -33,16 +33,12 @@ class ConnectorConfig:
 class DoRAConfig:
     r: int = 16
     lora_alpha: int = 8
-    target_modules: List[str] = None
+    target_modules: List[str] = field(default_factory=lambda: [
+        "q_proj", "k_proj", "v_proj", "o_proj", 
+        "gate_proj", "up_proj", "down_proj"
+    ])
     lora_dropout: float = 0.1
     bias: str = "none"
-    
-    def __post_init__(self):
-        if self.target_modules is None:
-            self.target_modules = [
-                "q_proj", "k_proj", "v_proj", "o_proj", 
-                "gate_proj", "up_proj", "down_proj"
-            ]
 
 @dataclass
 class PreprocessingConfig:
@@ -61,12 +57,10 @@ class OCRAgentConfig:
 
 @dataclass
 class LayoutValidatorConfig:
-    validation_methods: List[str] = None
+    validation_methods: List[str] = field(default_factory=lambda: [
+        "overlap_removal", "alignment_correction", "size_filtering"
+    ])
     overlap_threshold: float = 0.3
-    
-    def __post_init__(self):
-        if self.validation_methods is None:
-            self.validation_methods = ["overlap_removal", "alignment_correction", "size_filtering"]
 
 @dataclass
 class SpellingAgentConfig:
@@ -93,11 +87,11 @@ class EvaluationConfig:
 @dataclass
 class SystemConfig:
     project_dir: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_dir: str = None
-    raw_data_dir: str = None
-    processed_data_dir: str = None
-    output_dir: str = None
-    models_dir: str = None
+    data_dir: Optional[str] = None
+    raw_data_dir: Optional[str] = None
+    processed_data_dir: Optional[str] = None
+    output_dir: Optional[str] = None
+    models_dir: Optional[str] = None
     use_gpu: bool = True
     
     def __post_init__(self):
@@ -119,17 +113,17 @@ class SystemConfig:
 
 @dataclass
 class Config:
-    system: SystemConfig = SystemConfig()
-    vision_encoder: VisionEncoderConfig = VisionEncoderConfig()
-    language_model: LanguageModelConfig = LanguageModelConfig()
-    connector: ConnectorConfig = ConnectorConfig()
-    dora: DoRAConfig = DoRAConfig()
-    preprocessing: PreprocessingConfig = PreprocessingConfig()
-    ocr_agent: OCRAgentConfig = OCRAgentConfig()
-    layout_validator: LayoutValidatorConfig = LayoutValidatorConfig()
-    spelling_agent: SpellingAgentConfig = SpellingAgentConfig()
-    orchestrator: AgentOrchestratorConfig = AgentOrchestratorConfig()
-    evaluation: EvaluationConfig = EvaluationConfig()
+    system: SystemConfig = field(default_factory=SystemConfig)
+    vision_encoder: VisionEncoderConfig = field(default_factory=VisionEncoderConfig)
+    language_model: LanguageModelConfig = field(default_factory=LanguageModelConfig)
+    connector: ConnectorConfig = field(default_factory=ConnectorConfig)
+    dora: DoRAConfig = field(default_factory=DoRAConfig)
+    preprocessing: PreprocessingConfig = field(default_factory=PreprocessingConfig)
+    ocr_agent: OCRAgentConfig = field(default_factory=OCRAgentConfig)
+    layout_validator: LayoutValidatorConfig = field(default_factory=LayoutValidatorConfig)
+    spelling_agent: SpellingAgentConfig = field(default_factory=SpellingAgentConfig)
+    orchestrator: AgentOrchestratorConfig = field(default_factory=AgentOrchestratorConfig)
+    evaluation: EvaluationConfig = field(default_factory=EvaluationConfig)
 
 # Default configuration
 DEFAULT_CONFIG = Config()

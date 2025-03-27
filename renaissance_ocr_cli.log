@@ -1,0 +1,6 @@
+2025-03-24 09:31:07,401 - matplotlib.font_manager - WARNING - Matplotlib is building the font cache; this may take a moment.
+2025-03-24 09:31:10,907 - matplotlib.font_manager - INFO - Failed to extract font properties from /System/Library/Fonts/Apple Color Emoji.ttc: In FT2Font: Could not set the fontsize (invalid pixel size; error code 0x17)
+2025-03-24 09:31:10,913 - matplotlib.font_manager - INFO - Failed to extract font properties from /System/Library/Fonts/Supplemental/NISC18030.ttf: In FT2Font: Could not set the fontsize (invalid pixel size; error code 0x17)
+2025-03-24 09:31:10,932 - matplotlib.font_manager - INFO - Failed to extract font properties from /System/Library/Fonts/LastResort.otf: tuple indices must be integers or slices, not str
+2025-03-24 09:31:11,005 - matplotlib.font_manager - INFO - Failed to extract font properties from /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc: In FT2Font: Can not load face (locations (loca) table missing; error code 0x90)
+2025-03-24 09:31:11,043 - matplotlib.font_manager - INFO - generated new fontManager
